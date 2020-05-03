@@ -13,6 +13,9 @@
 - What is the difference between a low-level language and a high level language?
 - What kind of language is JAVA and why?
 - What do you understand by running a JAVA application?
+- What is a .java file?
+- What is a .class file?
+- What is `bytecode`?
 - What do you understand by JVM?
 - What is an IDE?
 - Why do we need it?
@@ -141,7 +144,7 @@
         - `out` is an object which is part of the `System` class
         - `println` is a method which simply prints an expression which can be a string or even a math computation. Note the `ln` at the end of this method, which simply says that any other following output should be displayed on the next line. Of course, there is a similar method to `println` which does not move any upcoming content to the next line. This is named `print`
     - Take a look below for a better understanding of these two methods:
-    
+
         ```JAVA
         public class Application {
 
@@ -221,10 +224,14 @@ Play with them by adding and removing the public keyword, analyse the error mess
     - Also for this exercise, print the operation before, such that we know how we got the result.
     - For example, if I want to display the result of multiplying 5.1 by 4.2 I should not just directly print `21.42` instead, before computing the result, I should have something like: `5.1 * 4.2 = ` and then print `21.42`.
     - It's your choice of how the operation should be displayed, either on one line or two lines.
+5. What does the Following set of Statements Print?
+    ```JAVA
+    System.out.print("My lucky number is");
+    System.out.println(3 + 4 + 5);
+    ```
+6. Give 5 examples of legal class names and 5 examples of illegal class names. Hint: use your IDE
 
-5. Give 5 examples of legal class names and 5 examples of illegal class names. Hint: use your IDE
-
-6. How can you define a comment with your own words? Give an example of a commented code and uncommented code
+7. How can you define a comment with your own words? Give an example of a commented code and uncommented code
 
 ## Guidelines
 - It is always a great idea to type yourself the code that you are seeing it, even if you really understands what is doing.
