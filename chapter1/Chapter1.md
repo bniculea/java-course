@@ -32,7 +32,7 @@
 - Now that we know how to convert from base 10 in base 2, we should imagine that we will also have to convert from base 2 in base 10.
 - This operation is very simple, we only have to play with powers of 2
 - Let's suppose we want to convert our previous result (`11101101`) just to check that we can obtain back the `237` number
-- In order to do this, we start from the last digit of the number, and multiply each digit with a power of 2. The power of 2 will start from 0 and then will increase as long as we move to the right. Let's see below each step:
+- In order to do this, we start from the last digit of the number, and multiply each digit with a power of 2. The power of 2 will start from 0 and then will increase as long as we move to the left. Let's see below each step:
     - First we take the last digit (`1`) and multiply it with 2 to the power 0 (`1 * 2^0 = 1 * 1 = 1`)
     - Next we multiply `0` with 2 to the power 1 (`0 * 2^1 = 0 * 2 = 0`)
     - Next we multiply `1` with 2 to the power 2 (`1 * 2^2 = 1 * 4 = 4`)

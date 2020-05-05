@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chapter4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="introduction-to-java-methods-variables-and-primitive-data-types">Introduction to JAVA methods, variables and primitive data types</h1>
+<h2 id="objectives">Objectives</h2>
+<ul>
+<li>Recap previous sessions</li>
+<li>Variables</li>
+<li>Short introduction to objects, classes and methods</li>
+<li>JAVA Number types</li>
+<li>Homework exercises</li>
+</ul>
+<h2 id="recap-previous-sessions">Recap previous sessions</h2>
+<ul>
+<li>What is a class?</li>
+<li>How many classes can be in a single .java file?</li>
+<li>Can we have two public classes in the same .java file?</li>
+<li>What is the relationship between a .java file and the public class inside this file?</li>
+</ul>
+<h2 id="variables">Variables</h2>
+<ul>
+<li>
+<p>A program is said to be useful if it does more than just displaying strings or numbers. This means that most of the time, a program represents items from real life, making an abstraction of them such that it is easier for us to work with them.</p>
+<ul>
+<li>For exampe, if we were to create a Software application for a banking system, we would have to abstract entities like <code>accounts</code>, <code>employee</code>, <code>records</code>, etc. in our program.</li>
+</ul>
+</li>
+<li>
+<p>In JAVA, these entities that we are making an abstractions of are called <code>objects</code>. And in the next lessons, we will see how can we add behavior to these objects by creating our own classes.</p>
+</li>
+<li>
+<p>So far, we have played with texts and numbers so we have encountered some data types. Thus it is crucial to understand that in JAVA, every value has a <code>type</code>:</p>
+<ul>
+<li><code>Hello, World</code> is a <code>String</code></li>
+<li><code>23</code> has the type <code>int</code> (just an abbreviation for integer)</li>
+</ul>
+</li>
+<li>
+<p>It is very important to know the type of the value we are working on because the type is the one who decides what can you do with that value.</p>
+<ul>
+<li>For example, you cannot compute the multiplication of two strings but for sure you can compute it for two integers.</li>
+</ul>
+</li>
+<li>
+<p>Most of the time, you will want to store a value such that it can be easily reused at a later time.</p>
+</li>
+<li>
+<p>In order to remember a value, or simply said to store it, we need a <code>variable</code>.</p>
+</li>
+<li>
+<p>A <code>variable</code> is a storage location in the computer's memory that has a <code>type</code>, a <code>name</code> and some <code>content</code></p>
+<ul>
+<li><code>type</code> -&gt; specifies what kind of values can this variable hold</li>
+<li><code>name</code> -&gt; is used to reference the value store by the variable, in different places.</li>
+<li><code>content</code> -&gt; is the actual value stored at a certain memory location to which the variable makes a reference.</li>
+</ul>
+</li>
+<li>
+<p>Let's see some examples of variables:</p>
+<ul>
+<li><code>String greeting = &quot;Hello, World&quot;;</code></li>
+<li><code>int age = 44</code>;</li>
+</ul>
+</li>
+<li>
+<p>Can you identify in the previous examples which is the <code>type, name</code> and <code>content</code> of each variable?</p>
+</li>
+<li>
+<p>As we said,  we create variables in order to reuse them later, instead of redefining a certain value. This means that variables can be used in place of the values that they store:</p>
+<ul>
+<li>We can replace:<pre class="hljs"><code><div>    System.out.println(<span class="hljs-string">"Hello, World"</span>);
+</div></code></pre>
+</li>
+<li>With:<pre class="hljs"><code><div>   String greeting = <span class="hljs-string">"Hello, World"</span>;
+   System.out.println(greeting)
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Now you might think: <code>Why would I do this if I can simply type the value? Also, by directly typing the value, I only have one line of code.</code></p>
+<ul>
+<li>Well, think that before printing, for example, you might want to do some transformation to the text that you want to print. Meaning, for example, you might want to transform the text all in UPPERCASE, and this is very simple due to the fact that the <code>String</code> type already has built-in functionality for text manipulation:<pre class="hljs"><code><div>    String greeting = <span class="hljs-string">"Hello, World"</span>;
+    System.out.println(greeting.toUpperCase());
+
+</div></code></pre>
+</li>
+<li>Or maybe you have a text containing a certain code, which you are the only one who knows what it means. Thus, you can create a variable which has a name that suggests what does that value represent.</li>
+</ul>
+</li>
+<li>
+<p>Whenever you create a variable, there are just two decisions you have to take:</p>
+<ol>
+<li>What type should I use for the variable?
+<ul>
+<li>This is highly influenced by what kind of value do I want to store. If it is a text, I would want a <code>String</code>, if it is a number, then an <code>int</code>, etc.</li>
+<li>Also note that it is an error to store a value whose type does not match the type of the variable. For example, if we want to store the number <code>28</code> in a String variable, the compiler will throw an error.</li>
+</ul>
+</li>
+<li>What name should I give to the variable?
+<ul>
+<li>Giving a good name is the most important thing when defining a variable. This name will emphasize what the value will represent, what is its meaning.</li>
+<li>For example, variable name <code>firstName</code> is a better choice than the name <code>f</code>.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="rules-when-naming-a-variable">Rules when naming a variable</h3>
+<ul>
+<li>
+<p>A name or identifier can be made up of letters, digits and the underscore (<code>_</code>) and dollar sign(<code>$</code>). But it cannot start with a digit and it cannot be built only from digits:</p>
+<ul>
+<li><code>greeting9</code> is legal</li>
+<li><code>9greeting</code> is illegal</li>
+</ul>
+</li>
+<li>
+<p>You cannot use other symbols such as <code>?</code> or <code>%</code>. For example, <code>hello!</code> is not a legal identifier.</p>
+</li>
+<li>
+<p>Spaces are not permitted inside identifiers: <code>lucky number</code> is not a legal identifier.</p>
+</li>
+<li>
+<p>Also keep in mind that there are some reserved words which you cannot use as identifiers. Among them we have:</p>
+<ul>
+<li><code>public</code></li>
+<li><code>class</code></li>
+<li><code>static</code></li>
+<li>etc.</li>
+</ul>
+</li>
+<li>
+<p>Never forget that JAVA is a case sensitive language, this means that <code>greeting</code> and <code>Greeting</code> are two different identifiers</p>
+</li>
+<li>
+<p>Some other guidelines:</p>
+<ul>
+<li>By convention, variable names usuallys tart with a lowercase letter and class names with an Uppercase letter</li>
+<li>It is OK to use an occasional uppercase letter such as <code>luckyNumber</code>. This mixture of lowercase and uppercase letters is sometimes called <code>camel case</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="variables-definition">Variables definition</h3>
+<ul>
+<li>
+<p>In order to define a variable, we have to follow the syntax below:</p>
+<ul>
+<li><code>&lt;typeName&gt; &lt;variableName&gt; = &lt;value&gt;</code> ( e.g String name = &quot;Bogdan, Niculeasa&quot;; )</li>
+<li><code>&lt;typeName&gt; variableName&gt;;</code> (e.g String name;)</li>
+</ul>
+</li>
+<li>
+<p>The difference between them is that the first one also has a value associated with it when the second one does not.</p>
+</li>
+<li>
+<p>The most important part of using a variable is the fact that we can change its value, later on.</p>
+<ul>
+<li>For example, let's suppose we want to declare a variable which holds the name of the user which is logged in into facebook, for example. And, whenever a different user is logged in, we don't want to create a new variable for her/him, just update the value of the variable to be the name of the current user.</li>
+<li>This is possible using the assignment operator, namely <code>=</code></li>
+<li>Let's look at the following example:
+<ul>
+<li>We have the following int variable which holds the age of the current user: <code>int age = 18;</code></li>
+<li>If we later on want to update its value to say 22, all that we have to do is: <code>age = 22;</code></li>
+<li>As you saw, there is no need to also type again the type of the variable, just use its name and JAVA will know to which variable you are referring to</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>NOTE: There might be a confusion between what the equals sign (<code>=</code>) means in math, where it refers to equality and in programming when it refers to assignment.</p>
+</li>
+<li>
+<p>Also very important, all variables should be initialized before accessing them, this means that they should have a value associated with them.</p>
+</li>
+<li>
+<p>By accessing them, it simply means using the variable as in the example below:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> age;
+age = <span class="hljs-number">21</span>;
+System.out.println(age);
+</div></code></pre>
+</li>
+<li>
+<p>The safest choice, if you can, is to initialize the variable as soon as you declare it.</p>
+</li>
+</ul>
+<h2 id="short-introduction-to-objects-classes-and-methods">Short introduction to objects, classes and methods</h2>
+<ul>
+<li>
+<p>An object is an entity that you can manipulate in your program.</p>
+</li>
+<li>
+<p>We don't know for sure how an object is organized inside but it has well defined behaviour and that's what we are interested in.</p>
+</li>
+<li>
+<p>An object can be manipulated by calling one or more of its methods</p>
+</li>
+<li>
+<p>A method consists of a sequence of isntructions that accessess the internal data of the object.</p>
+</li>
+<li>
+<p>For example, so far, we know that <code>System.out</code> refers to an object which we manipulated by calling either <code>print</code> or <code>println</code>. When we call one of these methods, some activities occur inside the object and in the end, the text got displayed in the console.</p>
+</li>
+<li>
+<p>We have encountered so far at least two objects:</p>
+<ul>
+<li><code>System.out</code></li>
+<li><code>&quot;Hello, World!&quot;</code>
+These objects belong to different classes, the first one belongs to the class <code>PrintStream</code> and the last one belongs to the class <code>String</code></li>
+<li>Not only we can say that it belongs to some class, but in the same time, we can also say that the type is the same as the class (e.g: <code>&quot;Hello, World!&quot;</code> has the type <code>String</code>);</li>
+</ul>
+</li>
+<li>
+<p>Just as the <code>PrintStream</code> class provides the <code>print</code> and <code>println</code> methods, so does the String class provides its own, different methods.</p>
+</li>
+<li>
+<p>In order to see all the methods that are present in the <code>String</code> class, define a <code>String</code> variable and then, on the next line, type the name of the variable followed by <code>.</code> ,a window will appear with all the available methods (Note: this trick with dot is available for all the classes in JAVA)</p>
+<pre class="hljs"><code><div>    String name = <span class="hljs-string">"Bogdan, Niculeasa"</span>
+    name.
+</div></code></pre>
+<p>and something similar to the image below will appear on your screen:
+<img src="file:///d:/Teaching/Java Course/java-course/chapter4/images/eclipse-string-dot.png" alt="Eclipse display all methods" title="Eclipse display all methods"></p>
+</li>
+<li>
+<p>Now let's take a look at some example methods from the <code>String</code> class:</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+            String name = <span class="hljs-string">"Bogdan, Niculeasa"</span>;
+            <span class="hljs-comment">//length method returns how many characters are contained in a String</span>
+            System.out.println(name.length());
+            <span class="hljs-comment">//toLowerCase method transforms a String in a String using lowercase only letters</span>
+            System.out.println(name.toLowerCase());
+            <span class="hljs-comment">//toUpperCase method transforms a String in a String using uppercase only letters</span>
+            System.out.println(name.toUpperCase());
+        }
+    }
+</div></code></pre>
+<ul>
+<li>as you might noticed, we don't pass anything to these methods, unlike the <code>print</code> and <code>println</code> methods. That's because some methods expect parameters and some does not.</li>
+</ul>
+</li>
+<li>
+<p>Note: Whenever you want to call a method from a certain variable, first make sure that the method is defined for that type.</p>
+<ul>
+<li>For example, if we call <code>System.out.length()</code> an error similar to <code>The method length() is undefined for the type PrintStream</code> will be displayed.</li>
+</ul>
+</li>
+<li>
+<p>Also to remember, the content displayed in the dialog opened when you type <code>.</code> after the name of a variable, it is called the <code>public interface</code> of that type.</p>
+</li>
+</ul>
+<h3 id="method-parameters-and-return-values">Method Parameters and Return values</h3>
+<ul>
+<li>
+<p>Some methods need input in order to perform a certain operation. For example, the <code>println</code> method, required a String to be passed as parameterm, just to have what to print on the console.</p>
+<ul>
+<li>Remember that a parameter is something between <code>(</code> and <code>)</code></li>
+<li>Also, in computer science, a parameter is the technical term for the method input.</li>
+</ul>
+</li>
+<li>
+<p>Some methods, require multiple parameters, other required none. For example, the substring method has a version in which you can specify the start index and the end index, and it will return the portion of the string contained between indexes with the  mention that the index starts at 0 and it goes up to the end index but it will not include that index in the output. See the example below.</p>
+<pre class="hljs"><code><div>     <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+            String name = <span class="hljs-string">"Bogdan, Niculeasa"</span>;
+            String firstName = name.substring(<span class="hljs-number">0</span>, <span class="hljs-number">6</span>);
+            System.out.println(firstName);
+        }
+    }
+</div></code></pre>
+<ul>
+<li>It is always a good idea to read the documentation of each method when you call it.</li>
+</ul>
+</li>
+<li>
+<p>There is another characteristic of some methods. Namely, they can return a value. For example, the <code>length</code> method of the <code>String</code> type returns how many characters are inside a String variable.</p>
+<ul>
+<li>We can store the return value or pass it directly to a method. See the example below:<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        String name = <span class="hljs-string">"Bogdan, Niculeasa"</span>;
+        <span class="hljs-comment">//We can store the length in an int variable and pass the variable</span>
+        <span class="hljs-keyword">int</span> nameLen = name.length();
+        System.out.println(nameLen);
+        <span class="hljs-comment">//Or we can pass directly the call to the .length method and it will have the same result</span>
+        System.out.println(name.length());
+    }
+}
+
+</div></code></pre>
+<ul>
+<li>Don't bother with the int type for now. Just think that is a type that can hold integer numbers, we will look at it in the next section</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Remember that not all methods have to return something.</p>
+</li>
+<li>
+<p>Not let's see another  example with a method from the String class, namely the <code>replace</code> method:</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+            String phrase = <span class="hljs-string">"I have five dogs"</span>;
+            <span class="hljs-comment">//This replace method call will replace the word dogs with cats</span>
+            String updatedPhrase = phrase.replace(<span class="hljs-string">"dogs"</span>, <span class="hljs-string">"cats"</span>);
+            System.out.println(updatedPhrase);
+        }
+    }
+</div></code></pre>
+<ul>
+<li>Just to have a better understanding of the previous method, the <code>replace</code> method looks</li>
+</ul>
+</li>
+<li>
+<p>Note that most of the methods in the String class return another String which will contain the updated value. That's why the following expression is valid:</p>
+<pre class="hljs"><code><div>    String name=<span class="hljs-string">"Bogdan, Niculeasa"</span>;
+    System.out.println(name.replace(<span class="hljs-string">"Niculeasa"</span>, <span class="hljs-string">"Constantin"</span>).length());
+</div></code></pre>
+<p>and it will first replace the word <code>Niculeasa</code> with <code>Constantin</code> and then computes the <code>length</code> of the resulting String, namely <code>Niculeasa, Constantin</code> which is <code>21</code>.</p>
+</li>
+</ul>
+<h2 id="java-number-types">JAVA Number types</h2>
+<ul>
+<li>
+<p>JAVA has separate types for  <code>integers</code> and <code>floating-point</code> numbers</p>
+<ul>
+<li><code>integers</code> =&gt; whole numbers (e.g 2, 3, 56, 789, 1212, etc)</li>
+<li><code>floating-point</code> numbers =&gt; numbers that can have fractional parts (e.g 1.3, 2.34, 4.23, 1212.454555, etc)
+<ul>
+<li>Note that some floating point number might look like integer numbers but they are indeed floating point numbers. (e.g 3.0, 4.0, 5.0, etc.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>JAVA has different types for whole numbers and floating-point numbers because in some situations, integer numbers have several advantages like:</p>
+<ul>
+<li>they take less storage</li>
+<li>processed faster</li>
+<li>don't cause rounding errors</li>
+</ul>
+<p>but in the same time,  if we want to have more precision, for example when computing distances, grading points, etc, we would go for a floating-point data type like <code>double</code>.</p>
+</li>
+<li>
+<p>There are multiple types for both integer numbers and floating-point numbers but for now we will stick with two:</p>
+<ul>
+<li><code>int</code> for representing integer numbers</li>
+<li><code>double</code> for representing floating point numbers</li>
+</ul>
+</li>
+<li>
+<p>VERY IMPORTANT!!!</p>
+<ul>
+<li>
+<p>The number types, in JAVA, are called primitives and not classes and that's why, they have no methods.</p>
+</li>
+<li>
+<p>For example, if we have the following variable:</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">int</span> age = <span class="hljs-number">33</span>;
+</div></code></pre>
+<p>and then type <code>name.</code> we will see that there will be no suggestion for us as if it were a String variable.</p>
+</li>
+<li>
+<p>However, you can combine numbers with math operators like (<code>*</code>, <code>/</code>, <code>+</code>, <code>-</code>, etc.)</p>
+<ul>
+<li>The same precedence rules for math will also apply here</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>In the previous homework there was an exercise to compute the average of three numbers: 3, 7 and 9. But the result was not correct because their average is 6.33 and the program displayed 6. The fix is to make use of the floating-point data types:</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">double</span> first = <span class="hljs-number">3.0</span>;
+        <span class="hljs-keyword">double</span> second = <span class="hljs-number">7.0</span>;
+        <span class="hljs-keyword">double</span> third = <span class="hljs-number">9.0</span>;
+        <span class="hljs-keyword">double</span> average = (first+second+third)/<span class="hljs-number">3</span>;
+        System.out.println(average);
+    }
+}
+</div></code></pre>
+<p>Note that we would still obtained the same result if we were to keep the data type of the numbers as <code>int</code> and just to make the  number against which we divide as <code>double</code>:</p>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">int</span> first = <span class="hljs-number">3</span>;
+        <span class="hljs-keyword">int</span> second = <span class="hljs-number">7</span>;
+        <span class="hljs-keyword">int</span> third = <span class="hljs-number">9</span>;
+        <span class="hljs-keyword">double</span> average = (first+second+third)/<span class="hljs-number">3.0</span>;
+        System.out.println(average);
+    }
+}
+</div></code></pre>
+<p>Note that we also had to keep the type of the average variable as double, if we were to keep it as <code>int</code>, the compiler would complain about it.</p>
+</li>
+</ul>
+<h3 id="conversion-between-data-types">Conversion between data types</h3>
+<ul>
+<li>By conversion we mean transforming one data type to another, for example transforming a <code>floating-point</code> number to an <code>integer</code> number.</li>
+<li>There are two rules that should be understood here:
+<ol>
+<li>Conversion from <code>int</code> to <code>double</code> will always succeed:<pre class="hljs"><code><div><span class="hljs-keyword">int</span> grade = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">double</span> floatingGrade = grade;
+</div></code></pre>
+Having this snippet, the compiler will not complain.</li>
+<li>Conversion from <code>double</code> to <code>int</code> will not succeed by default. The compiler will throw an error:<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">double</span> floatingGrade = <span class="hljs-number">10.0</span>;
+        <span class="hljs-keyword">int</span> grade = floatingGrade;
+    }
+}
+</div></code></pre>
+And the error will look like: <code>Type mismatch: cannot convert from double to int</code>
+<ul>
+<li>I said that it fails by default because we can still force this process of conversion to work by using a technic called <code>casting</code>. We can make a cast by simply saying the type to which we want to convert, in paranthesis, just in front of the value or variable that we want to convert:</li>
+</ul>
+<pre class="hljs"><code><div>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">double</span> floatingGrade = <span class="hljs-number">10.0</span>;
+        <span class="hljs-keyword">int</span> grade = (<span class="hljs-keyword">int</span>)floatingGrade;
+    }
+}
+</div></code></pre>
+Now to compiler will not complain anymore.
+NOTE: be cautios when converting from floating point numbers to int numbers as you will lose precision. This is because the number will be truncated and it will only keep the integer part.
+<ul>
+<li>Remember that this is truncation and not round up. You can see it in the example below:</li>
+</ul>
+<pre class="hljs"><code><div>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+        <span class="hljs-keyword">double</span> grade = <span class="hljs-number">9.95</span>;
+        <span class="hljs-keyword">int</span> convertedGrade = (<span class="hljs-keyword">int</span>)grade;
+        
+        System.out.println(convertedGrade);
+    }
+}
+</div></code></pre>
+<ul>
+<li>By running this program, we will obtain 9 and this might impact the student who was more close to the 10 rather than to the 9 grade.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>Casting is a powerfull technique but it should be used with attention!</li>
+</ul>
+</li>
+</ul>
+<p>As a last exercise for this session, let's write a program which converts a number of days into years, weeks and days. For example if we have 1329 days, this means that we have 3 years, 33 weeks and 3 days.</p>
+<ul>
+<li>Solution:<pre class="hljs"><code><div>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> </span>{
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+            <span class="hljs-keyword">int</span> days = <span class="hljs-number">1329</span>;
+            
+            <span class="hljs-keyword">int</span> years = days/<span class="hljs-number">365</span>;
+            <span class="hljs-keyword">int</span> weeks = (days % <span class="hljs-number">365</span>) / <span class="hljs-number">7</span>;
+            <span class="hljs-keyword">int</span> remainingDays = days - ((years * <span class="hljs-number">365</span>) + (weeks * <span class="hljs-number">7</span>));
+            System.out.println(<span class="hljs-number">1329</span> + <span class="hljs-string">" days mean: "</span> + years+<span class="hljs-string">" years, "</span> + weeks + <span class="hljs-string">" weeks and "</span> + remainingDays + <span class="hljs-string">" days"</span>);
+        }
+    }
+</div></code></pre>
+</li>
+</ul>
+<h2 id="homework-exercises">Homework exercises</h2>
+<ol>
+<li>
+<p>What is the type of the values &quot;10&quot; and 10?</p>
+</li>
+<li>
+<p>Declare a string variable which contains the value &quot;Hello, Moto&quot;.</p>
+</li>
+<li>
+<p>Declare a int variable which hold the value 10. Also, define a string variable which contains the value <code>10</code> but as a string.</p>
+</li>
+<li>
+<p>As we said that there is a difference between what the equals sign means in math and what it means in programming, is <code>10=10</code> a valid JAVA expression?</p>
+</li>
+<li>
+<p>Create a JAVA program which displays the length of the following text: &quot;JAVA is a high-level programming language!&quot;</p>
+</li>
+<li>
+<p>Create a JAVA program which will extract the text <code>high-level</code> from the String <code>&quot;JAVA is a high-level programming language!&quot;</code></p>
+<ul>
+<li>Rememeber  to see the class example for the <code>substring</code> method</li>
+</ul>
+</li>
+<li>
+<p>Create a JAVA program which will replace the letter <code>b</code> with <code>f</code> in the followin text: <code>&quot;This is a beast!&quot;</code></p>
+</li>
+<li>
+<p>Create a JAVA program which replace the group of letters <code>aa</code> with <code>b</code> in the following text: <code>&quot;aaa&quot;</code>. What did you expected? Read the documentation of the method in order to see what is happening behind the scene.</p>
+</li>
+<li>
+<p>We said in the lecture that floating point numbers are suspect to round errors. Create a JAVA program which computes the following subtraction: <code>1.0 - 0.9</code>. Before running the program, think what you would expect to be as the result and then run it.</p>
+</li>
+<li>
+<p>Which number type (<code>int</code> or <code>double</code>) would you use for storing the area of a circle?</p>
+</li>
+<li>
+<p>Create a JAVA application which displays the area of a circle with radius equal with 6.5.</p>
+<ul>
+<li>Bonus point: use <code>Math.PI</code> for the pi constant</li>
+</ul>
+</li>
+<li>
+<p>Create a JAVA program which computes the Harmonic Mean of the following numbers: <code>6, 9, 11, 43, 22, 15</code>.</p>
+<ul>
+<li>For formula about the Harmonic mean, check this link: https://byjus.com/harmonic-mean-formula/</li>
+</ul>
+</li>
+<li>
+<p>Create a JAVA project which converts seconds into hours, minutes and seconds. For example, if we have 3999 seconds, this means that we will have <code>1 hours, 6 minutes and 39 seconds</code></p>
+</li>
+</ol>
+
+</body>
+</html>
