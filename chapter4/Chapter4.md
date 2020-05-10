@@ -23,7 +23,7 @@
 - In JAVA, these entities that we are making an abstractions of are called `objects`. And in the next lessons, we will see how can we add behavior to these objects by creating our own classes.
 
 - So far, we have played with texts and numbers so we have encountered some data types. Thus it is crucial to understand that in JAVA, every value has a `type`:
-    - `Hello, World` is a `String`
+    - "`Hello, World`" is a `String`
     - `23` has the type `int` (just an abbreviation for integer)
 
 - It is very important to know the type of the value we are working on because the type is the one who decides what can you do with that value.
