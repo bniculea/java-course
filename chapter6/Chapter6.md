@@ -2,6 +2,7 @@
 
 ## Objectives
 - Recap previous session
+- Introduction to reading from the standard input
 - Introduction to the `boolean` data type
 - Boolean operators
 - Making decisions
@@ -17,6 +18,44 @@
 - What is `method overloading`?
 - Can you give some examples of method overloading from the String class? If not, keep it as an excercise.
 
+## Introduction to reading from the standard input
+- By standard input, we mean the terminal. And reading from the standard input, simply means that we want to be able to introduce values in the terminal such that the program will be able to use them.
+- Before explaining, let's see how this can be done and then we will explain everything line by line:
+    ```JAVA
+        import java.util.Scanner;
+
+        public class App {
+
+            public static void main(String[] args) {
+                Scanner in = new Scanner(System.in);
+                
+                System.out.println("Enter an integer number:");
+                int number = in.nextInt();
+                System.out.println("The integer number entered is: " +  number);
+                
+                System.out.println("Enter a double number:");
+                double number2 = in.nextDouble();
+                System.out.println("The double number entered is: " + number2);
+                
+                System.out.println("Enter a word:");
+                String word = in.next();
+                System.out.println("The word entered is: " + word);
+            
+            }
+            
+        }
+
+    ```
+    - The first line which is very new to you is this: `import java.util.Scanner;`
+        - We need this because the functionality that enables us to read from the standard input, resides in a different package, namely the `java.util` package
+        - Now if you recall, a package is simply a way to structure you code and classes and JAVA creators decided to put classes with similar functionality in the same package. This means that there are a lot of packages in the JAVA framework but no worry about it, you will see that our IDE can take care of it by itself
+        - Now you might wonder, `well, String is also a class and we haven't used any import for it. Also for the Math class`. The answer is that we have a package, called `java.lang` package which contains the classes that most of the JAVA application will use and that's why, it is imported by default.
+    - The next interesting line is the one in which we declare a variable of type Scanner and then we initialize it with the keyword `new: `` Scanner in = new Scanner(System.in);``
+        - Also this way of initializing is fresh for you but it will become a habbit in the next sessions when we will learn about creating our own classes and will also learn about constructors. Until then, just try to use this line exactly as it is whenever you need to read data from the standard input.
+    - Now that we have a variable of type `Scanner`, which we can also call it an object, all that we have to do, is to call the method specific to the data type that I want to read from the terminal.
+    - For example, if I want to read an integer number, I have to call the `in.nextInt()` method which will read an `int` number and it will return to the caller.
+    - You can see in the example, how can we read numbers and text from the standard input, a.k.a terminal.
+    - This is pretty much everything that you should know in order to be able to follow the examples and exercises from this session.
 ## Introduction to the `boolean` data type
 - For evaluating conditions, JAVA uses the so called ``boolean variables``
 - The boolean type can only hold two values: `true` or `false`
@@ -158,7 +197,13 @@ Note: Single equal sign means assignment, double equal sign means comparison
 - In the image below, we can see the process of making decisions, illustrated wirth a diagram:
  ![Logo:](./images/DecisionDiagram.PNG)
 
-- Now let's make an exercise in which we ask the user to enter a number between 1 and 10 and the output will tell how that number relates to 5 or 6, meaning that if the number is greater than 5, we will display the number and a statement that says it is bigger than 5. But if the number is smaller than 6, we show the number together with a statement that says that the number is smaller than 6.:
+
+### Class Exercises = if statement
+
+1. Create a JAVA program which asks the user to enter a number between 1 and 10 and then output how will the entered number relate to 5 or 6.
+    - Sample Input: 5
+    - Sample Output: You entered 5 which is smaller than 6
+    - Solution:
     ```JAVA
         import java.util.Scanner;
 
@@ -180,6 +225,45 @@ Note: Single equal sign means assignment, double equal sign means comparison
         }
     ```
 
+### Class exercises - IF-Else statements
+1. Create a JAVA program which will solve quadratic equations by reading the values of the equations from the Standard Input:
+    - Sample Input:
+    - Sample Output:
+    - Solution:
+        ```JAVA
+            import java.util.Scanner;
+
+            public class App {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    
+                    System.out.print("Enter value for a: ");
+                    double a = in.nextDouble();
+                    
+
+                    System.out.print("Enter value for b: ");
+                    double b = in.nextDouble();
+                    
+                    System.out.print("Enter value for c: ");
+                    double c = in.nextDouble(); 
+                    
+                    double result = b*b - 4.0 * a * c;
+                    if(result > 0.0) {
+                        double r1 = (-b + Math.sqrt(b * b - 4 * a * c))/2 * a;
+                        double r2 = (-b - Math.sqrt(b * b - 4 * a * c))/2 * a;
+                        System.out.println("The roots are "+r1+ " and " + r2);
+                    } else if(result == 0.0) {
+                        double r1 = -b / (2.0 * a);
+                        System.out.println("We only have one root: " + r1);
+                    } else {
+                        System.out.println("The equation has no real roots");
+                    }
+                
+                }
+                
+            }
+        ```
 ## Homework exercises
 1. Create a JAVA program which evaluates the following expressions:
     - 10 > 4
@@ -189,6 +273,9 @@ Note: Single equal sign means assignment, double equal sign means comparison
     - 10 != 10
     - 10 == 10
     - Note: before running the program, try to think what will be the result. Also, for a better visualisation of the results, try to assign each number from the expression to variables and also store the result in a boolean variable. In the end, simply call `System.out.println` and pass the result as parameter.
-
+2. Write a JAVA program which reads a number from the Standard Input and then prints whether it is negative or positive
+    - Sample Input: 35
+    - Sample Output: The number 35 is positive
+3. 
 ## Guidelines
 - Even though, most of the time, the precedence of the operator matches the one from Math, we should always make a habbit of using paranthesis to avoid subtle bugs.
