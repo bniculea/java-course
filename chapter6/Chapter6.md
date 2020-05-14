@@ -196,9 +196,16 @@ Note: Single equal sign means assignment, double equal sign means comparison
     - If the result of a comparison is `false`, the statement following the `if` will be skipped
 - In the image below, we can see the process of making decisions, illustrated wirth a diagram:
  ![Logo:](./images/DecisionDiagram.PNG)
+- One use of the `if` statement that we can think ok, is for example in a banking application. Think that when the user wants to withdraw money, we can simply check if the amount that it wants to withdraw is smaller or equal to what he/she has available in the account, thus, the `if` statement allows us to limit the input that we accept.
 
+- As you might have already seen, the syntax of an if statement looks like this:
+    ```JAVA
+        if (condition) {
+            //statement is executed
+        }
+    ```
 
-### Class Exercises = if statement
+#### Class Exercises = if statement
 
 1. Create a JAVA program which asks the user to enter a number between 1 and 10 and then output how will the entered number relate to 5 or 6.
     - Sample Input: 5
@@ -225,7 +232,49 @@ Note: Single equal sign means assignment, double equal sign means comparison
         }
     ```
 
-### Class exercises - IF-Else statements
+
+### Extending the `if` statement: `if-else`
+- If we take a look at our previous example in which we compare the heights of two children, we can be sure that one child cannot be in the same time smaller and taller, thus, we can simplify the example to:
+    ```JAVA
+        public class App {
+
+            public static void main(String[] args) {
+                
+                int bogdanHeight = 172;
+                int marianHeight = 177;
+                
+                if (bogdanHeight > marianHeight) {
+                    System.out.println("Bogdan is Taller");
+                } else if(marianHeight > bogdanHeight) {
+                    System.out.println("Marian is Taller");
+                } else {
+                    System.out.println("These children have the same height");
+                }
+                
+            }
+            
+        }
+    ```
+    - Now let's see what is happening here. First we check if the height of bogdan is smaller or higher than the height of marian, if it is not, we go over to the next if statement which JAVA has a certain syntax for it, namely `else if`
+    - The else if is like a continuation of the first if in case that did not passed the check. If also this check failed (returned false), we have the last step which is simple an `else` statement. We don't have another `if` here because one value can be higher, smaler or equal than another value, that's why, our last else is like a catch all statement.
+- The idea behind having multiple `if` and `else if` statements is to emphasize a list of steps that should be performed in certain situations which cannot occur in the same time.
+- Also there is no need to have an `else-if`, we can have only an `if` or `else-if`, it simply depends on the logic that we want to implement
+
+NOTE: What you should remember is the following:
+    - The first statement should always be the `if` statement
+    - The second or any other following can be an `else-if` statement
+    - The last one, most of the time, should be an  `else` statement. I say most of the time, because in some situations, the compiler will force you to have an `else` statement but in others do not. Nevertheless, omitting to put the else statement can lead to `bugs`.
+
+- As you might have already seen, the syntax of an `if-else` statement looks like this:
+    ```JAVA
+        if (condition) {
+            //statement is executed
+        } else {
+            //other statement is executed.
+        }
+    ```
+
+#### Class exercises - IF-Else statements
 1. Create a JAVA program which will solve quadratic equations by reading the values of the equations from the Standard Input:
     - Sample Input:
     - Sample Output:
@@ -264,6 +313,176 @@ Note: Single equal sign means assignment, double equal sign means comparison
                 
             }
         ```
+2. Create a JAVA method, called `isEven` which accepts one integer number and checks if the number is even or not. If the number is even, it should return `true`, otherwise `false`
+    - Sample Input: 4
+    - Sample Output: true
+    - Solution:
+    ```JAVA
+        import java.util.Scanner;
+
+        public class Application {
+
+            public static void main(String[] args) {
+                Scanner in = new Scanner(System.in);
+                System.out.print("Enter a value for x: ");
+                int x = in.nextInt();
+                System.out.println(isEven(x));
+            }
+            
+            public static boolean isEven(int number) {
+                if(number % 2 == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+    ```
+3. Create a JAVA program that determines a student's grade. The program will read three types of scores: quizz, mid-term and final-scores. Then, it will determine the grade based on the following rules:
+    - if the average score >=90% then the grade is A
+    - if the average score >= 70% and  < 90% then the grade is B
+    - if the average score >=50% and <70% then the grade is C
+    - if the average score <50% then the grade is F
+    - Sample Input:
+        - Enter QUIZ score: 80
+        - Enter Mid-Term score:68
+        - Enter Final Score: 90
+    - Sample Output:
+        - Your grade is B.
+    - Solution: 
+        ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("Enter QUIZ score: ");
+                    double quizScore = in.nextDouble();
+                    System.out.print("Enter Mid-Term score: ");
+                    double midTermScore = in.nextDouble();
+                    System.out.print("Enter Final score: ");
+                    double finalScore = in.nextDouble();
+                    
+                    double average = computeAverage(quizScore, midTermScore, finalScore);
+                    
+                    if(average >= 90.0) {
+                        System.out.println("You grade is A");
+                    } else if (average >= 70.0 ||average < 90.0) {
+                        System.out.println("Your grade is B");
+                    } else if (average >= 50 || average < 70) {
+                        System.out.println("Your grade is C");
+                    } else {
+                        System.out.println("Your grade is F");
+                    }
+                }
+
+                private static double computeAverage(double quizScore, double midTermScore, double finalScore) {
+                    return (quizScore + midTermScore + finalScore ) / 3;
+                }
+                
+            }
+        ```
+4. Write a JAVA program which will read the day number starting with 1 for Monday and 7 for Sunday, and it will return the name of the day.
+    - Sample input: 
+        - Enter the number of the day: 2
+    - Sample output: Tuesday
+    - Solution: 
+        ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("Enter the number of the day: ");
+                    int day = in.nextInt();
+                    if(day == 1) {
+                        System.out.println("Monday");
+                    } else if (day == 2) {
+                        System.out.println("Tuesday");
+                    } else if (day == 3) {
+                        System.out.println("Wednesday");
+                    } else if (day == 4) {
+                        System.out.println("Thursday");
+                    } else if (day == 5) {
+                        System.out.println("Friday");
+                    } else if (day == 6) {
+                        System.out.println("Saturday");	
+                    } else {
+                        System.out.println("Sunday");
+                    }
+                }
+            }
+
+        ```
+### Nested `if-else`
+- By nested we mean that we can have nested `if` statements inside other `if` statements like in the snippet below:
+    ```JAVA
+        if(condition1) {
+            if(subcondition) {
+                then statement
+            } else {
+                then statement
+            }
+        } else if (condition2) {
+            if(subcondition) {
+                then statement
+            } else {
+                then statement
+            }
+        }
+        //etc
+    ```
+- Note that in the snippet above we don't have valid JAVA code from the syntax perspective.
+    - This is something which is usually called Pseudocod
+    - It is useful just for explaining a concept and not for compiling it and turning it into a real life program.
+- Also note that you can have as many nested `if` statements as you want but do not overuse them. You will see that when you have more than 2 levels of nestedness, your code will become harder to read.
+
+#### Class exercises -NESTED IF-Else statements
+1. Write a JAVA program which reads  a year from the keyboard and then determines if the year is leap or not.
+    - Sample input:
+        - Enter the year: 1992
+    - Sample output: 1992 is a leap year
+    - Sample input: 
+        - Enter the year: 2015
+    - Sample output: 2015 is not a leap year
+    - Solution:
+        ```JAVA
+        import java.util.Scanner;
+
+        public class Application {
+
+            public static void main(String[] args) {
+                Scanner in = new Scanner(System.in);
+                System.out.print("Enter a year : ");
+                int year = in.nextInt();
+                if (year % 4 == 0)
+                {
+                    if (year % 100 == 0)
+                    {
+                        if (year % 400 == 0)
+                        {
+                        System.out.println(year + "is a leap year");
+                        }
+                        else
+                        {
+                        System.out.println(year + "is not a leap year");
+                        }
+                    }
+                    else
+                    {
+                        System.out.println(year+ " is a leap year");
+                    }
+                }
+                else
+                {
+                    System.out.println(year + "is not a leap year");
+                }
+            }
+        }
+        ```
 ## Homework exercises
 1. Create a JAVA program which evaluates the following expressions:
     - 10 > 4
@@ -276,6 +495,30 @@ Note: Single equal sign means assignment, double equal sign means comparison
 2. Write a JAVA program which reads a number from the Standard Input and then prints whether it is negative or positive
     - Sample Input: 35
     - Sample Output: The number 35 is positive
-3. 
+3. Write a JAVA program which allows the user to input her/his age. Then the program will show if the person is eligible to vote. Aperson who is eligible to vote must be older than or equal to 18 years old
+    - Sample input: 17
+    - Samle output: This person is not eligible for voting
+4. Write a JAVA program to accept a coordinate point in a XY coordinate system and determine inw hich quadrant the coordinate point lies.
+    - Sample input:
+        - Enter X: 3
+        - Enter Y: 4
+    - Sample output: The Point P(3,4) lies in the first quadrant
+    - Sample input:
+        - Enter X: -3
+        - Enter Y: -3
+    - Sample Output: The Point P(-3,-3) lies in the third quadrant
+NOTE: take a look at the image below in order to clearly see where a certain point resides
+    ![Quadrants](./images/Quadrants.PNG)
+5. Write a JAVA program which check if three sides form a triangle or not.
+    - Sample Input:
+        - a: 7
+        - b: 10
+        - c: 5
+    - Sample output: The entered numbers can form a valid triangle
+    - Sample Input:
+        - a: 1
+        - b: 10
+        - c: 12
+    - Sample output: The entered numbers cannot form a valid triangle
 ## Guidelines
 - Even though, most of the time, the precedence of the operator matches the one from Math, we should always make a habbit of using paranthesis to avoid subtle bugs.
