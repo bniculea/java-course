@@ -103,6 +103,29 @@
                 }
             }
         ```
+4. Create a JAVA method which receives a `String` and an integer number as parameters. The method should return a new String where the character at the index represented by  the integer parameter, has been removed. Note: the index should be in the interval 0, string length -1, inclusive.
+
+    - Sample Input: "Kitten", 1
+    - Sample Output: "Ktten"
+    - Sample Input2: "Kitten", 0
+    - Sample Output2: "itten"
+    - Solution:
+        ```JAVA
+            public class Application {
+
+            public static void main(String[] args) {
+                System.out.println(removeAtPosition("Kitten", 1));
+                System.out.println(removeAtPosition("Kitten", 0));
+            }
+            
+            public static String removeAtPosition(String text, int position) {
+                String front = text.substring(0, position);
+                String back = text.substring(position+1);
+                return front + back;
+            }
+        }
+        ```
+
 ## More conditional statements exercises
 
 1. Write a JAVA program which reads a letter from the Standard Input. The program should print Vowel or Consonant, depending on the user input. If the user input is not a letter (between a and z or A and Z), or is a string of length > 1, print an error message.
@@ -224,7 +247,7 @@
                 System.out.println(validRightTriangle);
             }
             
-            private static boolean canFormRightTriangle(double sideA, double sideB, double sideC) {
+            public static boolean canFormRightTriangle(double sideA, double sideB, double sideC) {
                 if(sideA <= 0 || sideB <= 0 || sideC <= 0) {
                     return false;
                 }
@@ -239,3 +262,136 @@
             }
         }
         ```
+5. Monkey problem. We have two monkeys, `a` and `b`, and two parameters `aSmile` and `bSmile` which indicates if each monkey is smiling.  We are in trouble if both of them are smiling or if neither is smiling. Create a method which returns `true` if we are in trouble, `false` otherwise.
+    - Solution:
+        ```JAVA
+        public class Application {
+
+            public static void main(String[] args) {
+                System.out.println(isMonkeyTrouble(true, true));
+            }
+            
+            public static boolean isMonkeyTrouble(boolean aSmile, boolean bSmile) { 
+                if(aSmile == true && bSmile == true || (aSmile == false & bSmile == false)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        ```
+6. Try to reduce the logic for the previous exercises. Think in what scenarios do we return true and in what do we return false
+    - Solution:
+        ```JAVA
+        public class Application {
+
+            public static void main(String[] args) {
+                System.out.println(isMonkeyTrouble(true, true));
+            }
+            
+            public static boolean isMonkeyTrouble(boolean aSmile, boolean bSmile) { 
+                if(aSmile != bSmile) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        ```
+7. We have a loud talking parrot. We are in trouble if our parrot is talking before hour 7 or after 20. Create a JAVA method which determines if we are in trouble or not. The method should receive two parameters:
+    - if the parrot is talking or not
+    - the hour (0-23)
+    - Solution:
+        ```JAVA
+            public class Application {
+
+                public static void main(String[] args) {
+                    System.out.println(isParrotTrouble(true, 19));
+                }
+                
+                public static boolean isParrotTrouble(boolean isParrotTalking, int hour) { 
+                    if(isParrotTalking && (hour < 7 || hour > 20) ) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        ```
+8. Create a JAVA method which receives a String and returns a new String where the first and the last characters have been exchanged.
+    - Sample Input: code
+    - Sample Output: eodc
+    - Sample Input: a
+    - Sample Output: a
+    - Sample Input: ab
+    - Sample Output: ba
+    - Solution:
+        ```JAVA
+            public class Application {
+
+                public static void main(String[] args) {
+                    System.out.println(reverseFrontAndBack("code"));
+                    System.out.println(reverseFrontAndBack("a"));
+                    System.out.println(reverseFrontAndBack("ab"));
+
+                }
+                
+                public static String reverseFrontAndBack(String text) {
+                    if(text.length() <= 1) {
+                        return text;
+                    } else {
+                        String middle = text.substring(1, text.length()-1);
+                        return text.charAt(text.length()-1) + middle + text.charAt(0); 
+                    }
+
+                }
+            }
+        ```
+
+## Homework exercises
+1. Create a JAVA method which receives a parameter of type String. The method should return a new String which will be the String received as a parameter + the word `not` added in front of it. Note: If the parameter already contains the word `not`, it should return the String unchanged.
+    - Sample Input: "Candy"
+    - Sample Output: "not Candy"
+    - Sample Input 2: "not good"
+    - Sample Output 2: "not good"
+Hint: Search for a method defined in the `String` class which verifies if a `String` starts with a certain text.
+
+2. Create a JAVA method which receives a String as a parameter. The method will consider the first three characters of the text as the front of it and should return a new String which will contain three times the front of the parameter. Note: if the text contains lest than 3 characters, the front is whatever is there.
+    - Sample Input: JAVA
+    - Sample Output: JAVJAVJAV
+    - Sample Input2: Chocolate
+    - Sample Output2: ChoChoCho
+    - Sample Input3: Ab
+    - Sample Output3: AbAbAb
+3. Create a JAVA method which receives a String parameter and returns a new String with the last character added at the front and at the back. The text parameter should be at least  of length 1.
+    - Sample Input: cat
+    - Sample Output: tcatt
+    - Sample Input2: Hello
+    - Sample Output2: oHelloo
+    - Sample Input3: a
+    - Sample Output: aaa
+
+ 4. Create a JAVA method which receives an integer parameters and returns true if the number is either a multiple of 3 or a multiple of 5.
+    - Sample Input: 3
+    - Sample Output: true   
+    - Sample Input2: 10
+    - Sample Input2: true
+    - Sample Input3: 8
+    - Sample Output3: false
+5. Given two temperatures, return true if one is less than 0 and the other is greater than 100
+    - Sample Input: 120, -1
+    - Sample Output: true
+    - Sample Input2: -1, 120
+    - Sample Output2: true
+    - Sample Input3: 2, 120
+    - Sample Output3: false
+6. Given two int values, return true if either of them is in the range 10..20 inclusive
+    - Sample Input: 12, 99
+    - Sample Output: true
+    - Sample Input2: 21, 12
+    - Sample Output2: true
+    - Sample Input3:8, 99
+    - Sample Output3: false
+## Guidelines
+- Try at the end of each session to note about each new JAVA class and methods that you encountered (e.g Random, Math, etc). 
+- Try to implement again all the exercises that have been implemented by us, together. You will see that you might come with a different solution! But this is not wrong! Because a problem, most of the time, can be solved in multiple ways.
