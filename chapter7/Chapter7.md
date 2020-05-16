@@ -347,7 +347,71 @@
                 }
             }
         ```
+9. Create a JAVA program which will determine how many bottles of `x` litres need to be open to fill a bottle of `y` littres
+    - Sample Input: 
+        - `Enter X: 0.75`
+        - `Enter Y: 4`
+    - Sample Output: `We need to open 6.0 bottles of 0.75 litres to fill a bottle of 4.0 litres`
+    - Solution:
+        ```JAVA
+            import java.util.Scanner;
 
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("Enter X: ");
+                    double x = in.nextDouble();
+                    System.out.print("Enter Y: ");
+                    double y = in.nextDouble();
+                    
+                    if(x >= y) {
+                        System.out.println("We need to open one bottle of " + x + " litres to fill a bottle of " + y + " litres");
+                    } else {
+                        double result = y / x;
+                        System.out.println("We need to open " + Math.ceil(result) + " bottles of " + x + " litres to fill a bottle of " + y + " litres");
+                    }
+                }
+            }
+
+        ```
+10. Create a JAVA method which receives three `double` parameters, `a, b, x` and returns true if `x` belongs to the closed interval `[a,b]`;
+    - Sample Input:
+        - `Enter a: 2.1`
+        - `Enter b: 4.5`
+        - `Enter x: 4.3`
+    - Sample Output: `true`
+    - Sample Input2:
+        - `Enter a: 4.2`
+        - `Enter b: 7`
+        - `Enter x: 9.1`
+    - Sample Output3: `false`
+    - Solution:
+        ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("Enter a: ");
+                    double a = in.nextDouble();
+                    System.out.print("Enter b: ");
+                    double b = in.nextDouble();
+                    System.out.print("Enter x: ");
+                    double x = in.nextDouble();
+                    System.out.println(isInRange(a, b, x));
+                }
+                
+                public static boolean isInRange(double a, double b, double x) {
+                    if( x >= a && x <= b) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        ```
 ## Homework exercises
 1. Create a JAVA method which receives a parameter of type String. The method should return a new String which will be the String received as a parameter + the word `not` added in front of it. Note: If the parameter already contains the word `not`, it should return the String unchanged.
     - Sample Input: "Candy"
@@ -378,20 +442,41 @@ Hint: Search for a method defined in the `String` class which verifies if a `Str
     - Sample Input2: true
     - Sample Input3: 8
     - Sample Output3: false
-5. Given two temperatures, return true if one is less than 0 and the other is greater than 100
+5. Create a JAVA method which receives two temperatures as parameters and returns true if one is less than 0 and the other is greater than 100
     - Sample Input: 120, -1
     - Sample Output: true
     - Sample Input2: -1, 120
     - Sample Output2: true
     - Sample Input3: 2, 120
     - Sample Output3: false
-6. Given two int values, return true if either of them is in the range 10..20 inclusive
+6. Create a JAVA method which receives two int values, as parameters and returns true if either of them is in the range 10..20 inclusive
     - Sample Input: 12, 99
     - Sample Output: true
     - Sample Input2: 21, 12
     - Sample Output2: true
     - Sample Input3:8, 99
     - Sample Output3: false
+7. Create a JAVA program which computes the age limit for children participating to a competition. At this competion, can participate children with age between `a` and `b` inclusiv. To verify, read the limits and the  age of the children who wishes to participate,from the keyboard, and then check if she/he is eligible or not.
+    - Sample Input:
+        - `a: 11`
+        - `b: 16`
+        - `n: 21`
+    - Sample output: `false`
+    - Sample Input:
+        - `a: 12`
+        - `b: 15`
+        - `n: 12`
+    - Sample Output: `true`
+8. Create a JAVA method which receives the ages of two children, in years, and then returns who is older and with how much:
+    - Sample input: 
+        - `First kid: 16`
+        - `Second kid: 19`
+    - Sample output: `The second kid is 3 years older than the first kid`
+    - Sample Input:
+        - `First kid: 22`
+        - `Second kid: 22`
+    - Sample Output: `The children have the same age`
+    
 ## Guidelines
 - Try at the end of each session to note about each new JAVA class and methods that you encountered (e.g Random, Math, etc). 
 - Try to implement again all the exercises that have been implemented by us, together. You will see that you might come with a different solution! But this is not wrong! Because a problem, most of the time, can be solved in multiple ways.
