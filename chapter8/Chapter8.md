@@ -6,7 +6,8 @@
 - Learn about increment and decrement operators
 - Combining assignment and arithmetic
 - Introduction to Iteration
-- For Loops
+- `while` Loops
+- Class exercises
 - Homework Exercises
 - Guidelines
 
@@ -129,6 +130,198 @@
         - A condition controls how many times the iteration is performed. You can almost read it as plain english: `while n is greater than 0`
         - You can see some similarities between a `while` and an `if` statement as both check for some condition
 
+- The syntax for the while loop is very basic:
+    ```JAVA
+        while (<condition>) {
+            //statements go here
+        }
+    ```
+    - The idea of the `while` loop is that the statements inside its scope are executed as long as the condition is true. But keep in mind that the condition should end at a specific moment in time.
+    - If we take the snippet above, the flow is like this:
+        - Suppose we read 4 from the keyboard
+        1. It checks if n is greater or equal to 0 and it passes (n = 4)
+        2. Displays 4 (because n = 4)
+        3. Decrements n ( n will have the value 3)
+        4. It checks if n is greater or equal to 0 and it passes (n = 3)
+        5. Displays 3 (because n = 3)
+        6. Decrements n (n will have the value 2)
+        7. It checks if n is greater or equal to 0 and it passes (n = 2)
+        8. Displays 2 (because n = 2)
+        9. Decrements n (n will have the value 1)
+        10. It checks if n is greater or equal to 0 and it passes (n = 1)
+        11. Displays 1 (because n = 1)
+        12. Decrements n (n will have the value 0)
+        13. It checks if n is greater or equal to 0 and it passes (n = 0)
+        14. Displays 0 (because n = 0)
+        15. Decrements n (will have the value -1)
+        16. It checks if n is greater or equal to 0 and it fails because n = -1. Now, the statements inside its scope are skipped
+    - You can easily see that a lot of stuff got repeated but at each step we were closer and closer to evaluate the condition to `false`. If we do not take care, our loop will run forever and as soon as the JVM will figure it out, we  will get an error.
+
+## Class exercises
+1. Create a JAVA program which will read numbers from the keyboard until the user presses the digit `0`. Next, the program should count how many of the read numbers were even.
+    - Sample Input: 1 2 3 4 6 8 3 2 4 5 9 8 0
+    - Sample Output: We have read 7 even numbers
+    - Solution: 
+        ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner keyboard = new Scanner(System.in);
+                    System.out.print("Enter a number: ");
+                    int number = keyboard.nextInt();
+                    int evenNumbersCount = 0;
+                    while(number != 0) {
+                        if(number % 2 == 0) {
+                            evenNumbersCount++;
+                        }
+                        System.out.print("Enter a number: ");
+                        number = keyboard.nextInt();
+                    }
+                    System.out.println("We have read " + evenNumbersCount + " even numbers");		
+                }
+            }
+
+        ```
+2. Create a JAVA program which  will read n numbers from the Standard Input and then will display on one line the first n natural numbers not equal to 0 in ascending order and on another line, the same numbers but in descending order.
+    - Sample Input: 5
+    - Sample Output:   
+        - 1 2 3 4 5
+        - 5 4 3 2 1
+        - Solution:
+            ```JAVA
+                import java.util.Scanner;
+
+                public class Application {
+
+                    public static void main(String[] args) {
+                        Scanner keyboard = new Scanner(System.in);
+                        System.out.print("Enter a number: ");
+                        int number = keyboard.nextInt();
+                        int counter = 1;
+                        while (counter <= number) {
+                            System.out.print(counter);
+                            counter++;
+                        }
+                        System.out.println();
+                        
+                        while (number > 0) {
+                            System.out.print(number);
+                            number--;
+                        }
+                    }
+                }
+
+            ```
+
+3. Create a JAVA program wich will compute the average of n numbers (n read from the keyboard).
+    - Sample Input: n = 5
+        - 2 5 78 9 11
+    - Sample Output: 21.0
+    - Solution: 
+        ```JAVA
+        ```
+4. Create a JAVA program which will read `n` numbers from the keyboard and then will verify all of them if they are perfect squares.
+    - Sample Input: n = 5
+    - Sample Output:
+        - 1 Perfect Square
+        - 9 Perfect Square
+        - 16 Perfect Square
+        - 18 Not a perfect square
+        - 25 Perfect Square
+    - Solution:
+        ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("How many numbers will we read?");
+                    int numbersRead = in.nextInt();
+                    
+                    while (numbersRead > 0) {
+                        System.out.print("Enter a number to check if it is a Perfect Square: ");
+                        double number = in.nextDouble();
+                        double squareRoot = Math.sqrt(number);
+                        double roundedDownSquareRoot = Math.ceil(squareRoot);
+                        if(squareRoot - roundedDownSquareRoot == 0) {
+                            System.out.println(number + " Perfect Square");
+                        } else {
+                            System.out.println(number + " Not a perfect square");
+                        }
+                        
+                        numbersRead--;
+                    }
+                }
+            }
+
+        ```
+
+5. Create a JAVA program wihch will read n numbers from the keyboard and then will display the following pyramid:
+    ```JAVA
+        1
+        1 2
+        1 2 3
+        ............
+        1 2 3 ... n
+    ```
+    - Solution:
+        ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("N = ");
+                    int n = in.nextInt();
+                    int i = 1;
+                    
+                    while (i <= n) {
+                        int line = 1;
+                        
+                        while (line <= i) {
+                            System.out.print(line + " ");
+                            line++;
+                        }
+                        System.out.println();
+                        i++;
+                    }
+                }
+            }
+
+        ```
+6. Create a JAVA program which will read two nubers: `n` and `p`. The program will display all the powers of n which are smaller than `p`.
+    - Sample Input:
+        - N = 2
+        - P = 21
+    - Sample Output: 0, 1, 2, 3, 4
+    - Solution:
+        ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("N = ");
+                    int n = in.nextInt();
+                    System.out.print("P = ");
+                    int p = in.nextInt();
+                    
+                    int power = 0;
+                    while (Math.pow(n, power) < p) {
+                        System.out.print(power + " ");
+                        power++;
+                    }
+
+                }
+            }
+
+        ```
+
 ## Homework exercises
 1. Try to imagine what is the result of the following snippets, without using the Eclipse IDE. Afterwards, check it againd the IDE and see if you were right or you need to read the first part again:
     - ```JAVA
@@ -138,3 +331,25 @@
         ```
     - ```JAVA
         ```
+2. Create a JAVA program which will read the integer number `n` from the keyboard and it will display, in descending order, the even numbers which are smaller or equal to `n` but different than 0.
+    - Sample Input: 8
+    - Sample Output: 8 6 4 2
+3. Create a JAVA program which will display the first n odd numbers.
+    - Sample Input: 5
+    - Sample Output: 1 3 5 7 9
+4. Create a JAVA program which will compute the Harmonic Mean of n numbers (n read from the keyboard).
+    - Sample Input: 6 
+        - 1 2 3 4 5 6
+    - Sample Output: 2.44
+
+5. Create a JAVA program which will compute `a` to the power `b` without using the `Math.pow` method.
+    - Sample Input:
+        - a = 3
+        - b = 4
+    - Sample Output: 81
+
+
+
+## Guidelines
+- As always, try to resolve the class exercises by yourself and then compare your answers with the provided solution
+- Everytime you encounter something new, try to write it down, it will help the process of memorizing it.
