@@ -221,6 +221,28 @@
     - Sample Output: 21.0
     - Solution: 
         ```JAVA
+            import java.util.Scanner;
+
+            public class Application {
+
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("How many numbers will you read?  ");
+                    int n = in.nextInt();
+                    double sum = 0;
+                    int i = 0;
+                    while (i < n) {
+                        System.out.print("Enter number #" + (i+1) + ": ");
+                        int number = in.nextInt();
+                        sum += number;
+                        i++;
+                    }
+                    
+                    System.out.println("The average is: " + (sum/n));
+                    
+                }
+            }
+
         ```
 4. Create a JAVA program which will read `n` numbers from the keyboard and then will verify all of them if they are perfect squares.
     - Sample Input: n = 5
