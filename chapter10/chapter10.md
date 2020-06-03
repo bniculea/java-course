@@ -17,8 +17,6 @@
 
 - Note: each exercises will be first solved using the `for` instruction and then using the `while` instruction such that you will get familiar with both of them
 
-TBD: remove this reference: => PBINFO => Iteration: Page 2
-
 1. Given `n` natural numbers, create a JAVA program which will compute the root mean square ( media patratica) of them.
 
    - Note: the formula for this is described in the image below:
@@ -79,11 +77,6 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
           }
 
       }
-
-  ```
-
-  ```
-
   ```
 
 2.  Given `n`, create a JAVA program wich will compute `10 to the power n`.
@@ -132,9 +125,6 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
                 for(int i = 0; i < n; i++) {
                     result = result * 10;
                 }
-      ```
-
-
                 System.out.println("10 to the power " + n + " is: " + result );
 
             }
@@ -269,7 +259,7 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
 
     a. `while`:
 
-        ```JAVA
+    ```JAVA
             import java.util.Scanner;
 
             public class Application {
@@ -291,11 +281,11 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
 
             }
 
-        ```
+    ```
 
     b. `for`:
 
-        ```JAVA
+    ```JAVA
             import java.util.Scanner;
 
             public class Application {
@@ -316,7 +306,7 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
 
             }
 
-        ```
+    ```
 
 6.  Given a character `c` and a number `n`. Create a JAVA program which will display the following pyramid:
 
@@ -332,7 +322,7 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
 
     a. `while`:
 
-    ````java
+    ```java
     import java.util.Scanner;
             public class Application {
 
@@ -359,11 +349,12 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
 
             }
 
-        ```
+    ```
 
     b. `for`:
-        ```java
-            import java.util.Scanner;
+
+    ```java
+    import java.util.Scanner;
 
             public class Application {
 
@@ -385,11 +376,9 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
                 }
 
             }
+    ```
 
-        ```
-    ````
-
-7.  Create a JAVA program which will display a square of `n` rows and `n` columns, where each element is equal to the character `c` read from the keyboard.
+7)  Create a JAVA program which will display a square of `n` rows and `n` columns, where each element is equal to the character `c` read from the keyboard.
 
     - Sample Input:
       - n = 4
@@ -404,59 +393,58 @@ TBD: remove this reference: => PBINFO => Iteration: Page 2
     - Solution:
       a. `while`:
 
-            ```java
-                import java.util.Scanner;
+      ```java
+              import java.util.Scanner;
 
-                public class Application {
+              public class Application {
 
-                    public static void main(String[] args) {
-                        Scanner in = new Scanner(System.in);
-                        System.out.print("n = ");
-                        int n = in.nextInt();
-                        System.out.print("c = ");
-                        String character = in.next();
-                        int line = 0;
-                        while(line < n) {
-                            int column = 0;
-                            while(column < n) {
-                                System.out.print(character + " ");
-                                column++;
-                            }
-                            System.out.println();
-                            line++;
-                        }
-                    }
+                  public static void main(String[] args) {
+                      Scanner in = new Scanner(System.in);
+                      System.out.print("n = ");
+                      int n = in.nextInt();
+                      System.out.print("c = ");
+                      String character = in.next();
+                      int line = 0;
+                      while(line < n) {
+                          int column = 0;
+                          while(column < n) {
+                              System.out.print(character + " ");
+                              column++;
+                          }
+                          System.out.println();
+                          line++;
+                      }
+                  }
 
-                }
+              }
 
-            ```
+      ```
 
       b. `for`:
 
-            ```java
-                import java.util.Scanner;
+      ```java
+            import java.util.Scanner;
 
-                public class Application {
+            public class Application {
 
-                    public static void main(String[] args) {
-                        Scanner in = new Scanner(System.in);
-                        System.out.print("n = ");
-                        int n = in.nextInt();
-                        System.out.print("c = ");
-                        String character = in.next();
+                public static void main(String[] args) {
+                    Scanner in = new Scanner(System.in);
+                    System.out.print("n = ");
+                    int n = in.nextInt();
+                    System.out.print("c = ");
+                    String character = in.next();
 
-                        for(int line = 0; line < n; line++) {
+                    for(int line = 0; line < n; line++) {
 
-                            for(int column = 0; column < n; column++) {
-                                System.out.print(character + " ");
-                            }
-                            System.out.println();
+                        for(int column = 0; column < n; column++) {
+                            System.out.print(character + " ");
                         }
+                        System.out.println();
                     }
-
                 }
 
-            ```
+            }
+      ```
 
 ## Homework exercises
 
