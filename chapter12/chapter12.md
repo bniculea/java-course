@@ -412,7 +412,7 @@ Note: the first `.length` tells us how many rows we have and the second `.length
        ```
    - Output: `The harmonic mean of the numbers on the second diagonale is: 8,08`
 
-5. W0rite a JAVA program which computes the sum of the numbers on the main diagonale and the sum of the numbers on the second diagonale and then displays which one is greater
+5. Write a JAVA program which computes the sum of the numbers on the main diagonale and the sum of the numbers on the second diagonale and then displays which one is greater
 
    - Input:
      - ```java
