@@ -473,7 +473,7 @@
      ```
    - Solution:
 
-     ```c++
+     ```java
          public class Application {
 
              public static void main(String[] args) {
@@ -591,7 +591,7 @@
      ```
    - Sample Output2: `true`
 
-6. Write a C++ program which will divide a matrix by a scalar. Note that you can only divide a matrix by a scalar! You cannot divide two matrices!
+6. Write a JAVA program which will divide a matrix by a scalar. Note that you can only divide a matrix by a scalar! You cannot divide two matrices!
    - Sample Input:
      ```JSON
                   2.0 9.0 7.0
