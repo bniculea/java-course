@@ -101,7 +101,7 @@
         }
      ```
 
-3. Given an array with `n` elements, create a C++ program which will determin how many elements are outside the closed interval determined by the first and last element
+3. Given an array with `n` elements, create a JAVA program which will determin how many elements are outside the closed interval determined by the first and last element
 
 - Sample Input:
   - n = 6
@@ -207,9 +207,220 @@
     }
     ```
 
+2. Given a 2D array with `n` rows and `n` columns which contains natural number, create a JAVA program which will compute the absolute difference between the sum of the elements on the main diagonale and the elements on the second diagonale.
+
+   - Sample Input:
+     ```json
+         n = 4
+         1  2  3  4
+         5  6  7  8
+         9  10 81 12
+         13 14 15 16
+     ```
+   - Sample Output: 70
+   - Solution:
+
+     ```java
+         import java.util.Scanner;
+
+         public class Application {
+
+             public static void main(String[] args) {
+                 int[][] matrix = new int[][]{
+                     {1,2,3,4},
+                     {5,6,7,8},
+                     {9,10,81,12},
+                     {13,14,15,16}
+                 };
+
+                 int sumMainDiagonale = 0;
+                 int sumSecondDiagonale = 0;
+                 for (int i = 0; i < 4; i++ ) {
+                     for (int j = 0; j < 4; j++) {
+                         if (i == j) {
+                             sumMainDiagonale += matrix[i][j];
+                         } else if (j == (4-1-i)) {
+                             sumSecondDiagonale += matrix[i][j];
+                         }
+                     }
+                 }
+
+                 System.out.println("The difference between the main diagonal and second diagonal is: " + Math.abs(sumMainDiagonale - sumSecondDiagonale));
+             }
+
+         }
+     ```
+
+3. Given a 2D array with `n` rows and `n` columns, create a JAVA program which will build another matrix which will be symetric with respect to the main diagonale of the given matrix.
+
+   - Sample Input:
+     ```json
+         n = 4
+         3 1 8 5
+         7 8 5 1
+         2 2 6 7
+         9 8 1 3
+     ```
+   - Sample Output:
+     ```json
+         3 7 2 9
+         1 8 2 8
+         8 5 6 1
+         5 1 7 3
+     ```
+   - Solution:
+
+     ```java
+        import java.util.Scanner;
+
+        public class Application {
+
+            public static void main(String[] args) {
+                Scanner keyboard = new Scanner(System.in);
+                System.out.println("Enter n: ");
+                int n = keyboard.nextInt();
+
+                int[][] matrix = new int[n][n];
+                for(int i = 0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        System.out.println("Enter an element for ["+i+","+j+"]: ");
+                        matrix[i][j] = keyboard.nextInt();
+                    }
+                }
+
+                int[][] result = new int[n][n];
+
+                for (int i = 0; i < n; i++ ) {
+                    for (int j = 0; j < n; j++) {
+                    result[i][j] = matrix[j][i];
+                    }
+                }
+
+                for (int i = 0; i < result.length; i++ ) {
+                    for (int j = 0; j < result[i].length; j++) {
+                        System.out.print(result[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+
+            }
+
+        }
+
+     ```
+
+4. Given a square matrix, create a JAVA program that will iterate clockwise the outside of the matrix.
+
+   - Sample Input:
+     ```json
+         n = 5
+         1 2 3 4 5
+         6 7 8 9 1
+         2 3 4 5 6
+         7 8 9 1 2
+         3 4 5 6 7
+     ```
+   - Sample Output:
+     ```json
+         1 2 3 4 5 1 6 2 7 6 5 4 3 7 2 6
+     ```
+   - Solution:
+
+     ```java
+        import java.util.Scanner;
+
+        public class Application {
+
+            public static void main(String[] args) {
+                Scanner keyboard = new Scanner(System.in);
+                System.out.println("Enter n: ");
+                int n = keyboard.nextInt();
+
+                int[][] matrix = new int[n][n];
+                for(int i = 0; i < n; i++) {
+                    for(int j = 0; j < n; j++) {
+                        System.out.println("Enter an element for ["+i+","+j+"]: ");
+                        matrix[i][j] = keyboard.nextInt();
+                    }
+                }
+
+                for(int i = 0; i < n; i++) {
+                    System.out.print(matrix[0][i] + " ");
+                }
+
+                for (int i = 1; i < n; i++) {
+                    System.out.print(matrix[i][n-1] + " ");
+                }
+
+                for (int i = n-2; i >=0;i-- ){
+                System.out.print(matrix[n-1][i] + " ");
+                }
+
+                for(int i = n-2; i > 0; i--) {
+                    System.out.print(matrix[i][0] + " ");
+                }
+
+            }
+
+        }
+     ```
+
+5. Given a matrix with `n` rows and `n` columns, create a JAVA program which will compute the sum of the elements which are on the two diagonals that are neighbor with the main diagonal.
+
+- Sample Input:
+
+  ```json5
+      n = 5
+      3 1 8 5 4
+      7 8 5 1 2
+      2 2 6 7 3
+      9 8 1 3 6
+      7 5 3 1 7
+  ```
+
+- Sample Output: 30
+- Solution:
+
+  ```java
+      import java.util.Scanner;
+
+      public class Application {
+
+          public static void main(String[] args) {
+              Scanner keyboard = new Scanner(System.in);
+              System.out.println("Enter n: ");
+              int n = keyboard.nextInt();
+
+              int[][] matrix = new int[n][n];
+              for(int i = 0; i < n; i++) {
+                  for(int j = 0; j < n; j++) {
+                      System.out.println("Enter an element for ["+i+","+j+"]: ");
+                      matrix[i][j] = keyboard.nextInt();
+                  }
+              }
+
+              int sum = 0;
+              for(int i = 0; i < n; i++) {
+                  if(i == 0) {
+                      sum += matrix[i][i+1];
+                  } else if (i == (n-1)) {
+                      sum += matrix[n-1][n-2];
+                  } else {
+                      sum += matrix[i][i-1];
+                      sum += matrix[i][i+1];
+                  }
+              }
+
+              System.out.println(sum);
+
+          }
+
+      }
+  ```
+
 ## Homework exercises
 
-1. Given an array with `n` elements of the form `a1, a2, ..., an`, natural numbers, Create a C++ program which will:
+1. Given an array with `n` elements of the form `a1, a2, ..., an`, natural numbers, Create a JAVA program which will:
 
    a. Display the elements of the array from the right to the left
    b. Compute the sum of the even elements
@@ -217,7 +428,15 @@
    d. Cmpute the number of the elements which are divisible with 10
    e. Compute the sum of the numberd which are divisible with 3 and on odd indices.
 
-Note: the program should display the output in the following way: - On the first line, it will display the elements from the right to left - On the second line, it will display the sum of the even elements - On the third line, it will display the sum of the elements on even indices - On the fourth line it will display how many elements are divisible with 10 - On the fifth line, it will display the sum of the numbers which are both divisible with 3 and on odd indices
+Note: the program should display the output in the following way:
+
+    - On the first line, it will display the elements from the right to left
+
+    - On the second line, it will display the sum of the even elements - On the third line, it will display the sum of the elements on even indices
+
+    - On the fourth line it will display how many elements are divisible with 10
+
+    - On the fifth line, it will display the sum of the numbers which are both divisible with 3 and on odd indices
 
 - Sample Input:
   - n = 10
@@ -230,3 +449,19 @@ Note: the program should display the output in the following way: - On the first
       1
       12
   ```
+
+2. Given an array with `n` rows and `n` columns and natural number elements, create a JAVA program which will Display, in ascending order, the sums of the elements in the four areas delimited by diagonals..
+   - Sample Input:
+     ```json
+         3 1 8 5 4
+         7 8 5 1 2
+         2 2 6 7 3
+         9 8 1 3 6
+         7 5 3 1 7
+     ```
+   - Sample Output:
+     - `10 18 19 20`
+
+## Guidelines
+
+- When solving the exercises, try to review what we have done because most of them are based on what we have already performed in the class.
