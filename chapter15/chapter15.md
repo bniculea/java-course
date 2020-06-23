@@ -413,7 +413,7 @@ Due to what we have written above, we can give a  definition for an object as:  
 
   ```
 - After calling the `setColor` method, the object named `bogdanCar`, will have a different value for the `color` field. This illustrates how each object is isolated from another object created from the same class. 
-- Usually, you say we have 2 different instances of the `Car` class, if we are in the same situation as above.
+- Usually, we say that we have 2 different instances of the `Car` class, if we are in the same situation as above.
 - For now, we will stop it here. In the next lesson we will have a deep dive into the constructors and `this` keyword.
 
 ## Homework exercises
