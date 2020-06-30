@@ -9,6 +9,7 @@
 - Static methods
 - Homework exercises
 - Guidelines
+- Next steps
 
 ## Recap previous sessions
 
@@ -268,9 +269,19 @@
 3. Is the substring method of the String class an accessor or a mutator?
 4. Suppose Java had no static methods. Then all methods of the Math class would be instance methods. How would you compute the square root of x?
 5. Is a Single Class with Many Static Methods not Object-Oriented
+6. Name two static fields of the `System` class.
 
 ## Guidelines
 
 - We have repeated content from the previous session but we have also added a lot of new concepts
 - Try to understand each concept what does it mean and where it can help us. If you have difficulties in understanding this, please ask me in the following lectures.
 - Pay more attention to the topics that I say you might encounter them in interviews
+
+## Next steps
+
+- In the following lessons we will take a look at the following topicS:
+  - Alternative forms of field initialization
+  - Scope of Class members
+  - Overlapping Scope and shadowing
+  - Organizing code in Packages
+  - Free topics (feel free to propose anything)
